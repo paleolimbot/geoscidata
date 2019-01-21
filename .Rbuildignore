@@ -1,0 +1,6 @@
+^rosm\.cache$
+^LICENSE\.md$
+^README\.Rmd$
+^data-raw$
+^geoscidata\.Rproj$
+^\.Rproj\.user$
