@@ -59,7 +59,7 @@ warwick <- warwick_raw %>%
     sample_id = na_if(sample_id, "No Sample"),
     magnetics = na_if(magnetics, "none") %>% as.numeric()
   ) %>%
-  filter(!is.na(rock_gcode) | !is.na(S_ppm)) %>%
+  filter(!is.na(rock_gcode), !is.na(S_ppm)) %>%
   select(
     station_id, starts_with("sample"), longitude, latitude,
     type, starts_with("rock"), legend, everything()
