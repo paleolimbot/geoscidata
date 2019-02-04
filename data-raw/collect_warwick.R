@@ -59,10 +59,14 @@ warwick <- warwick_raw %>%
     sample_id = na_if(sample_id, "No Sample"),
     magnetics = na_if(magnetics, "none") %>% as.numeric()
   ) %>%
+  mutate(quality = na_if(quality, "Enter_Data_DDL")) %>%
+  separate(legend, into = c("legend_code", "rock_group_abbrev", "legend_text"), sep = ", ") %>%
+  select(-legend_text) %>%
   filter(!is.na(rock_gcode), !is.na(S_ppm)) %>%
   select(
     station_id, starts_with("sample"), longitude, latitude,
-    type, starts_with("rock"), legend, everything()
+    type, starts_with("rock"), legend_code,
+    everything()
   )
 
 usethis::use_data(warwick, overwrite = TRUE)
